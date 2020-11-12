@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "consul": "^0.39.0",
+    "consul-kv-monitor": "^2.0.3"
+  }
+}
