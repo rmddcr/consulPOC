@@ -7,7 +7,7 @@ const consulClient = consul({
 const {ConsulKvMonitor, Errors} = require('consul-kv-monitor');
  
 const monitorConfig = {
-    keysPrefix: 'lcm',
+    keysPrefix: 'cluster/server-1',
     timeoutMsec: 1000,
     json: false
 };
@@ -24,13 +24,14 @@ function printData(consulKvData) {
         }
  
         const metadata = consulKvData.getMetadata(key);
-        console.log(`${key} => ${value}, metadata: ${JSON.stringify(metadata)}`);
+        console.log(`key ${key} updated to  ${value}`);
+        // console.log(`${key} => ${value}, metadata: ${JSON.stringify(metadata)}`);
     });
 }
  
 monitor.on('changed', (kvData) => {
-    console.log('Some data has changed');
-    console.log('Response headers:', JSON.stringify(monitor.getConsulHeaders()));
+    console.log('Key update');
+    // console.log('Response headers:', JSON.stringify(monitor.getConsulHeaders()));
     printData(kvData);
     console.log();
 });
