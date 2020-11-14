@@ -1,2 +1,3 @@
 .DS_Store
 node\ implementation/node_modules
+java\ implementation/target/*
